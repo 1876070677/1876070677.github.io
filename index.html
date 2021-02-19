@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blog with github</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <script>
+            function printTime() {
+                var callender = document.getElementById("date");
+                var clock = document.getElementById("now");
+                var today = new Date();
+
+                var slash = '<span style = "color:#EAEAEA;"> / </span>'
+                var clone = '<span style = "color:#EAEAEA;"> : </span>'
+
+                var year = today.getFullYear();
+                var month = today.getMonth();
+                var date = today.getDate();
+                var day = today.getDay();
+
+                var currentHours = addZero(today.getHours(), 2);
+                var currentMinutes = addZero(today.getMinutes(), 2);
+                var currentSeconds = addZero(today.getSeconds(), 2);
+
+                if (currentSeconds >= 50) {
+                    currentSeconds = '<span style = "color:#F15F5F;">' + currentSeconds + '</span>'
+                }
+
+                callender.innerHTML = year + slash + month + slash + date;
+                clock.innerHTML = currentHours + clone + currentMinutes + clone + currentSeconds;
+
+                setInterval("printTime()", 1000);
+            }
+
+            function addZero(num, digit) {
+                var zero = '';
+                time = num.toString();
+                if (time.length < digit) {
+                    zero = '0';
+                }
+
+                return zero + num;
+            }
+        </script>
+        <style>
+            body {
+                background-image : url('img/main.jpg');
+                background-repeat: no-repeat;
+                background-size : cover;
+            }
+            .time {
+                width : 600px;
+                height : 100px;
+                margin : 200px auto 0 auto;
+
+                font-family: 'Anton', sans-serif;
+                text-align: center;
+                color : #353535;
+                font-size: 5em;
+            }
+            #now {
+                font-size : 130px;
+            }
+        </style>
     </head>
-    <body>
-        <h1>지금부터 시작합니다</h1>
-        <p>포트폴리오를 위한 깃 블로그...</p>
+    <body onload="printTime()">
+        <div id = "wrapper">
+            <div class="time">
+                <span id="date"></span><br>
+                <span id="now"></span>
+            </div>
+        </div>
     </body>
 </html>
