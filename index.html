@@ -7,65 +7,39 @@
         content="img/OG_img.jpg">
         <meta property="og:title" content="Blog in Github">
         <meta property="og:description" content="자체 웹페이지 제작중...">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blog with github</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
-        <script>
-            function printTime() {
-                var callender = document.getElementById("date");
-                var clock = document.getElementById("now");
-                var today = new Date();
-
-                var slash = '<span style = "color:#EAEAEA;"> / </span>'
-                var clone = '<span style = "color:#EAEAEA;"> : </span>'
-
-                var year = today.getFullYear();
-                var month = today.getMonth();
-                var date = today.getDate();
-                var day = today.getDay();
-
-                var currentHours = addZero(today.getHours(), 2);
-                var currentMinutes = addZero(today.getMinutes(), 2);
-                var currentSeconds = addZero(today.getSeconds(), 2);
-
-                if (currentSeconds >= 50) {
-                    currentSeconds = '<span style = "color:#F15F5F;">' + currentSeconds + '</span>'
-                }
-
-                callender.innerHTML = year + slash + month + slash + date;
-                clock.innerHTML = currentHours + clone + currentMinutes + clone + currentSeconds;
-
-                setInterval("printTime()", 1000);
-            }
-
-            function addZero(num, digit) {
-                var zero = '';
-                time = num.toString();
-                if (time.length < digit) {
-                    zero = '0';
-                }
-
-                return zero + num;
-            }
-
-            function mvMain() {
-                document.getElementsByClassName("startWindow")[0].style.display = 'none'
-                document.getElementsByClassName("main_Frame")[0].style.display = 'block'
-            }
-        </script>
+        <script src="js/StartWindow.js"></script>
         <style>
-            body {
-                background-image : url('img/main.jpg');
-                background-repeat: no-repeat;
-                background-size : cover;
-            }
             .startWindow {
                 display : block;
+                width : 100%;
+                height : auto;
+                min-width: 1024px;
+                min-height: 100%;
+                background-image : url('img/StartWeb.jpg');
+                background-position : center;
+
+                position : fixed;
+                top : 0;
+                left : 0;
             }
             .main_Frame {
                 display : none;
+                width : 100%;
+                height : auto;
+                min-width: 1024px;
+                min-height: 100%;
+                background-image : url('img/main.jpg');
+                background-position : center;
+
+                position : fixed;
+                top : 0;
+                left : 0;
             }
             .time {
                 width : 600px;
@@ -81,7 +55,7 @@
                 font-family: 'Anton', sans-serif;
                 width : 600px;
                 height : 100px;
-                margin : 0 auto 0 auto;
+                margin : 20px auto 0 auto;
                 text-align: center;
 
                 font-size : 70px;
@@ -94,11 +68,18 @@
             #now {
                 font-size : 130px;
             }
+
+            @media screen and (max-width: 1024px) {
+            .wrapper {
+                left : 50%;
+                margin-left : -512px;
+            }
+        }
         </style>
     </head>
     <body onload="printTime()">
-        <div class="startWindow">
-            <div id = "wrapper">
+        <div class="wrapper">
+            <div class="startWindow">
                 <div class="time">
                     <span id="date"></span><br>
                     <span id="now"></span>
@@ -107,9 +88,9 @@
                     <span>Start your day...</span>
                 </div>
             </div>
-        </div>
-        <div class = "main_Frame">
-
+            <div class = "main_Frame">
+                
+            </div>
         </div>
     </body>
 </html>
