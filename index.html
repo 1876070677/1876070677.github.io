@@ -45,6 +45,11 @@
 
                 return zero + num;
             }
+
+            function mvMain() {
+                document.getElementsByClassName("startWindow")[0].style.display = 'none'
+                document.getElementsByClassName("main_Frame")[0].style.display = 'block'
+            }
         </script>
         <style>
             body {
@@ -52,9 +57,15 @@
                 background-repeat: no-repeat;
                 background-size : cover;
             }
+            .startWindow {
+                display : block;
+            }
+            .main_Frame {
+                display : none;
+            }
             .time {
                 width : 600px;
-                height : 100px;
+                height : 300px;
                 margin : 200px auto 0 auto;
 
                 font-family: 'Anton', sans-serif;
@@ -62,17 +73,39 @@
                 color : #353535;
                 font-size: 5em;
             }
+            .start {
+                font-family: 'Anton', sans-serif;
+                width : 600px;
+                height : 100px;
+                margin : 0 auto 0 auto;
+                text-align: center;
+
+                font-size : 70px;
+                border-radius : 10px;
+                border : 5px solid white;
+                box-shadow : 0px 0px 10px 0px white;
+                cursor : pointer;
+                color : white;
+            }
             #now {
                 font-size : 130px;
             }
         </style>
     </head>
     <body onload="printTime()">
-        <div id = "wrapper">
-            <div class="time">
-                <span id="date"></span><br>
-                <span id="now"></span>
+        <div class="startWindow">
+            <div id = "wrapper">
+                <div class="time">
+                    <span id="date"></span><br>
+                    <span id="now"></span>
+                </div>
+                <div class="start" onclick="mvMain()">
+                    <span>Start your day...</span>
+                </div>
             </div>
+        </div>
+        <div class = "main_Frame">
+
         </div>
     </body>
 </html>
